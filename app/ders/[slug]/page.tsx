@@ -20,8 +20,6 @@ export default async function LessonPage({ params }: Props) {
 
   return (
     <main style={{ padding: 32 }}>
-      <h1 style={{ marginBottom: 24 }}>{slug.toUpperCase()} Notları</h1>
-
       {sortedPdfs.length === 0 && <p>Bu ders icin henuz not yuklenmedi.</p>}
 
       {sortedPdfs.map((pdf) => (
@@ -65,12 +63,12 @@ export default async function LessonPage({ params }: Props) {
                   display: "inline-block",
                   fontSize: 16,
                   fontWeight: 600,
-                  color: "white",
+                  color: "gray-400",
                   textDecoration: "none",
                   marginBottom: 4,
                 }}
               >
-                {pdf.name}
+                {pdf.name.replace(/\.pdf$/i, "")}
               </a>
             </div>
           </div>
@@ -82,8 +80,9 @@ export default async function LessonPage({ params }: Props) {
               rel="noopener noreferrer"
               style={{
                 padding: "8px 12px",
-                background: "#0070f3",
-                color: "#fff",
+                background: "#DAA520",
+                color: "black",
+                fontWeight: "bold",
                 borderRadius: 6,
                 textDecoration: "none",
                 fontSize: 14,
@@ -96,11 +95,16 @@ export default async function LessonPage({ params }: Props) {
       ))}
 
       <Link
-        role="button"
         href="/"
-        style={{ display: "inline-block", marginTop: 12 }}
+        role="button"
+        style={{
+          color: "#DAA520",
+          textDecoration: "none",
+          fontSize: 16,
+          fontWeight: 500,
+        }}
       >
-        Geri don
+        &#8592;anasayfa
       </Link>
     </main>
   );
